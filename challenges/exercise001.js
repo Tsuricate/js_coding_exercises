@@ -6,6 +6,10 @@
 const capitalize = (word) => {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
+
+  const firstLetterInUppercase = word.slice(0, 1).toUpperCase();
+  const rest = word.slice(1);
+  return firstLetterInUppercase.concat(rest);
 };
 
 /**
@@ -18,6 +22,7 @@ const generateInitials = (firstName, lastName) => {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
   // Add your code here!
+  return firstName[0] + '.' + lastName[0];
 };
 
 /**
@@ -30,6 +35,8 @@ const addVAT = (originalPrice, vatRate) => {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
   // Add your code here!
+  const taxPrice = originalPrice * (vatRate / 100);
+  return Number((originalPrice + taxPrice).toFixed(2));
 };
 
 /**
@@ -42,6 +49,8 @@ const getSalePrice = (originalPrice, reduction) => {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
   // Add your code here!
+  const reductionAmount = (reduction * originalPrice) / 100;
+  return Number((originalPrice - reductionAmount).toFixed(2));
 };
 
 /**
@@ -52,6 +61,16 @@ const getSalePrice = (originalPrice, reduction) => {
 const getMiddleCharacter = (str) => {
   if (str === undefined) throw new Error("str is required");
   // Add your code here!
+  const isEven = str.length % 2 === 0;
+  if (!isEven) {
+    const middleCharacterIndex = Math.trunc(str.length / 2);
+    return str[middleCharacterIndex];
+  }
+  else {
+    const middleIndex = str.length / 2; 
+    return str.slice(middleIndex - 1, middleIndex + 1 )
+  }
+
 };
 
 /**
@@ -62,16 +81,19 @@ const getMiddleCharacter = (str) => {
 const reverseWord = (word) => {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
+  return [...word].reverse().join('');
+  // return word.split('').reverse().join('');
 };
 
 /**
  * Reverses letters of a given list of words
- * @param {string} words - Words to reverse
- * @return {string}
+ * @param {Array<string>} words - Words to reverse
+ * @return {Array<string>}
  */
 const reverseAllWords = (words) => {
   if (words === undefined) throw new Error("words is required");
   // Add your code here!
+  return words.map((word) => reverseWord(word));
 };
 
 /**
@@ -82,6 +104,7 @@ const reverseAllWords = (words) => {
 const countLinuxUsers = (users) => {
   if (users === undefined) throw new Error("users is required");
   // Add your code here!
+  return users.filter((user) => user.type === 'Linux').length;
 };
 
 /**
@@ -92,6 +115,10 @@ const countLinuxUsers = (users) => {
 const getMeanScore = (scores) => {
   if (scores === undefined) throw new Error("scores is required");
   // Add your code here!
+  const totalScore = scores.reduce((accumulator, currentScore) => {
+    return accumulator + currentScore;
+  }, 0);
+  return Number((totalScore / scores.length).toFixed(2));
 };
 
 /**
@@ -102,6 +129,13 @@ const getMeanScore = (scores) => {
 const simpleFizzBuzz = (n) => {
   if (n === undefined) throw new Error("n is required");
   // Add your code here!
+  const divisibleBy3 = n % 3 === 0;
+  const divisibleBy5 = n % 5 === 0;
+  
+  if ( divisibleBy5 && divisibleBy3) return 'fizzbuzz';
+  if (divisibleBy3) return 'fizz' ;
+  if (divisibleBy5) return 'buzz' ;
+  return n;
 };
 
 module.exports = {
