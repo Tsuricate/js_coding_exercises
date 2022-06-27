@@ -6,6 +6,7 @@
 const getSquares = (nums) => {
   if (nums === undefined) throw new Error("nums is required");
   // Your code here!
+  return nums.map((num) => num * num);
 };
 
 /**
@@ -16,6 +17,17 @@ const getSquares = (nums) => {
 const camelCaseWords = (words) => {
   if (words === undefined) throw new Error("words is required");
   // Your code here!
+  return words.reduce((accumulator, currentWord, index) => {
+    if (index === 0) {
+      accumulator = currentWord
+    } 
+    else {
+      const [firstLetter, ...rest] = currentWord.split('');
+      const capitalizedWord = firstLetter.toUpperCase() + rest.join('');
+      accumulator = accumulator + capitalizedWord;
+    }
+    return accumulator;
+  }, '')
 };
 
 /**
@@ -26,6 +38,10 @@ const camelCaseWords = (words) => {
 const getTotalSubjects = (people) => {
   if (people === undefined) throw new Error("people is required");
   // Your code here!
+  return people.reduce((accumulator, person) => {
+    accumulator = accumulator + person.subjects.length;
+    return accumulator;
+  }, 0)
 };
 
 /**
@@ -38,6 +54,15 @@ const checkIngredients = (menu, ingredient) => {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   // Your code here!
+
+  return menu.some((meal) => meal.ingredients.some((currentIngredient) => currentIngredient === ingredient));
+  
+  // return menu.reduce((accumulator, currentMeal) => {
+  //   const hasIngredient = currentMeal.ingredients.some((currentIngredient) => currentIngredient === ingredient);
+  //   if (hasIngredient) accumulator = hasIngredient;
+  //   return accumulator;
+  // }, false)
+
 };
 
 /**
@@ -50,6 +75,12 @@ const duplicateNumbers = (arr1, arr2) => {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Your code here!
+  return arr1.reduce((accumulator, currentNumber) => {
+    if (arr2.includes(currentNumber) && !accumulator.includes(currentNumber)) {
+      accumulator = [...accumulator, currentNumber].sort();
+    }
+    return accumulator;
+  }, [])
 };
 
 module.exports = {
