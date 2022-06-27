@@ -6,6 +6,7 @@
 const getFillings = (sandwich) => {
   if (sandwich === undefined) throw new Error("ingredients is required");
   // Your code here!
+  return sandwich['fillings'];
 };
 
 /**
@@ -16,6 +17,7 @@ const getFillings = (sandwich) => {
 const isFromManchester = (person) => {
   if (person === undefined) throw new Error("person is required");
   // Your code here!
+  return (person.city === 'Manchester');
 };
 
 /**
@@ -26,6 +28,7 @@ const isFromManchester = (person) => {
 const getBusNumbers = (people) => {
   if (people === undefined) throw new Error("people is required");
   // Your code here!
+  return Math.ceil(people / 40);
 };
 
 /**
@@ -36,6 +39,11 @@ const getBusNumbers = (people) => {
 const countSheep = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
   // Your code here!
+  return arr.filter((animal) => animal === 'sheep').length;
+
+  // return arr.reduce((accumulator, currentAnimal) => {
+  //   return currentAnimal === 'sheep' ? accumulator+ 1 : accumulator;
+  // }, 0)
 };
 
 /**
@@ -46,6 +54,7 @@ const countSheep = (arr) => {
 const hasMPostCode = (person) => {
   if (person === undefined) throw new Error("person is required");
   // Your code here!
+  return (person.address.postCode.startsWith('M') && person.address.city === 'Manchester');
 };
 
 module.exports = {
