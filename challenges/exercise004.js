@@ -6,6 +6,7 @@
 const findSmallNums = (nums) => {
   if (!nums) throw new Error("nums is required");
   // Your code here
+  return nums.filter((num) => num < 1);
 };
 
 /**
@@ -18,6 +19,7 @@ const findNamesBeginningWith = (names, char) => {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
   // Your code here
+  return names.filter((name) => name.startsWith(char));
 };
 
 /**
@@ -28,6 +30,7 @@ const findNamesBeginningWith = (names, char) => {
 const findVerbs = (words) => {
   if (!words) throw new Error("words is required");
   // Your code here
+  return words.filter((word) => word.startsWith('to '));
 };
 
 /**
@@ -38,6 +41,7 @@ const findVerbs = (words) => {
 const getIntegers = (nums) => {
   if (!nums) throw new Error("nums is required");
   // Your code here
+  return nums.filter((num) => Number.isInteger(num));
 };
 
 /**
@@ -48,6 +52,7 @@ const getIntegers = (nums) => {
 const getCities = (users) => {
   if (!users) throw new Error("users is required");
   // Your code here
+  return users.map((user) => user.data.city.displayName);
 };
 
 /**
@@ -58,6 +63,7 @@ const getCities = (users) => {
 const getSquareRoots = (nums) => {
   if (!nums) throw new Error("nums is required");
   // Your code here
+  return nums.map((num) => Number(Math.sqrt(num).toFixed(2)));
 };
 
 /**
@@ -70,6 +76,7 @@ const findSentencesContaining = (sentences, str) => {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
   // Your code here
+  return sentences.filter((sentence) => sentence.toLowerCase().includes(str.toLowerCase()));
 };
 
 /**
@@ -80,6 +87,14 @@ const findSentencesContaining = (sentences, str) => {
 const getLongestSides = (triangles) => {
   if (!triangles) throw new Error("triangles is required");
   // Your code here
+  return triangles.map((triangle) => {
+
+    return triangle.reduce((accumulator, triangleSide) => {
+      if (triangleSide > accumulator) accumulator = triangleSide;
+      return accumulator;
+    }, 0)
+
+  })
 };
 
 module.exports = {
