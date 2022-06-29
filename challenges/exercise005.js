@@ -8,6 +8,9 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
   // Your code here!
+  const indexOfNumber = nums.indexOf(n);
+  if (indexOfNumber === -1 || indexOfNumber === nums.length - 1) return null;
+  return nums[indexOfNumber + 1];
 };
 
 /**
@@ -18,6 +21,13 @@ const findNextNumber = (nums, n) => {
 const count1sand0s = (str) => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
+  const stringInArray = str.split('');
+  const numberOf1 = stringInArray.filter((string) => string === "1").length;
+  const numberOf0 = stringInArray.filter((string) => string === "0").length;
+  return {
+    1: numberOf1,
+    0: numberOf0,
+  }
 };
 
 /**
@@ -28,6 +38,7 @@ const count1sand0s = (str) => {
 const reverseNumber = (n) => {
   if (n === undefined) throw new Error("n is required");
   // Your code here!
+  return Number(n.toString().split('').reverse().join(''));
 };
 
 /**
@@ -38,6 +49,14 @@ const reverseNumber = (n) => {
 const sumArrays = (arrs) => {
   if (arrs === undefined) throw new Error("arrs is required");
   // Your code here!
+  return arrs.reduce((accumulator, arrayOfNumbers) => {
+
+    const sum = arrayOfNumbers.reduce((accumulator, number) => {
+      return accumulator + number;
+    }, 0)
+
+    return accumulator + sum;
+  }, 0)
 };
 
 /**
@@ -48,6 +67,13 @@ const sumArrays = (arrs) => {
 const arrShift = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
   // Your code here!
+  if (arr.length < 2) return arr;
+  if (arr.length < 4) return arr.reverse();
+
+  const firstNumber = arr.shift();
+  const lastNumber = arr.pop();
+
+  return [lastNumber, ...arr, firstNumber]; 
 };
 
 /**
@@ -60,6 +86,9 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   // Your code here!
+  const valuesInArray = Object.values(haystack);
+
+  return valuesInArray.find((value) => value.toString().toLowerCase().includes(searchTerm.toLowerCase())) !== undefined;
 };
 
 /**
@@ -70,6 +99,13 @@ const findNeedle = (haystack, searchTerm) => {
 const getWordFrequencies = (str) => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
+  const stringInLowerCase = str.toLowerCase().replace('!', '').replace('?', '').replace(',', '');
+  const strInArray = stringInLowerCase.split(' ');
+
+  return strInArray.reduce((accumulator, word) => {
+    if (!accumulator[word]) return {...accumulator, [word]: 1}
+    else return {...accumulator, [word]: accumulator[word] + 1}
+    }, {})
 };
 
 module.exports = {
