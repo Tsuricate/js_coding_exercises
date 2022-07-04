@@ -74,24 +74,24 @@ describe("isItPrime", () => {
 
 describe("createMatrix", () => {
   test("returns empty matrix for 0 and 'foo'", () => {
-    expect(createMatrix(0, "foo")).toBe([]);
+    expect(createMatrix(0, "foo")).toEqual([]);
   });
   test("returns correct matrix for 3 and 'foo'", () => {
-    expect(createMatrix(3, "foo")).toBe([
+    expect(createMatrix(3, "foo")).toEqual([
       ["foo", "foo", "foo"],
       ["foo", "foo", "foo"],
       ["foo", "foo", "foo"],
     ]);
   });
   test("returns correct matrix for 7 and 'bar'", () => {
-    expect(createMatrix(7, "bar")).toBe([
-      ["bar", "bar", "bar"],
-      ["bar", "bar", "bar"],
-      ["bar", "bar", "bar"],
-      ["bar", "bar", "bar"],
-      ["bar", "bar", "bar"],
-      ["bar", "bar", "bar"],
-      ["bar", "bar", "bar"],
+    expect(createMatrix(7, "bar")).toEqual([
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
+      ["bar", "bar", "bar", "bar", "bar", "bar", "bar"],
     ]);
   });
 });
